@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fashionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="A_id" />
+    </Key>
+    <Property Name="A_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="A_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="A_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="A_Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="A_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Billing">
+    <Key>
+      <PropertyRef Name="B_id" />
+    </Key>
+    <Property Name="B_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="B_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="B_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="B_Total" Type="Int32" />
+    <Property Name="B_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="B_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="B_Postal" Type="Int32" />
+    <Property Name="B_User_ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="C_ID" />
+    </Key>
+    <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pro_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Pro_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Pro_qty" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Collection">
+    <Key>
+      <PropertyRef Name="C_ID" />
+    </Key>
+    <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="C_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="C_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="P_ID" />
+    </Key>
+    <Property Name="P_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="P_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="P_Discription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="P_Discount" Type="Int32" />
+    <Property Name="P_Price" Type="Int32" />
+    <Property Name="P_Stock" Type="Int32" />
+    <Property Name="P_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="P_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="R_id" />
+    </Key>
+    <Property Name="R_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="R_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="R_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="R_discriptiopn" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="R_ProID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="U_id" />
+    </Key>
+    <Property Name="U_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="U_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="U_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="U_Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="U_Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="U_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="U_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="fashionEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="Self.admin" />
+    <EntitySet Name="Billings" EntityType="Self.Billing" />
+    <EntitySet Name="carts" EntityType="Self.cart" />
+    <EntitySet Name="Collections" EntityType="Self.Collection" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="Reviews" EntityType="Self.Review" />
+    <EntitySet Name="users" EntityType="Self.user" />
+  </EntityContainer>
+</Schema>

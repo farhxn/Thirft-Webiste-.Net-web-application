@@ -1,0 +1,83 @@
+﻿@model Thrift_Fashion.Models.user
+@{
+    ViewBag.Title = "Login";
+    ViewBag.Banner = "Account Management";
+    Layout = "~/Views/Shared/_LoginLayoutFinal.cshtml";
+}
+
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login_wrapper {
+        padding: 80px 75px;
+        background: #F7F7F7;
+        margin-bottom: 30px;
+        width: 500px;
+        box-shadow: 4px 5px 15px rgb(0 0 0 / 10%);
+        border-radius: 20px;
+    }
+
+    .title-7 {
+        text-align: center;
+    }
+
+    .logbtn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        border: 0;
+        background: #222222;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-weight: 600;
+        -webkit-transition: all 0.3s ease-out 0s;
+        -moz-transition: all 0.3s ease-out 0s;
+        -ms-transition: all 0.3s ease-out 0s;
+        -o-transition: all 0.3s ease-out 0s;
+        transition: all 0.3s ease-out 0s;
+        color: #fff !important;
+        text-decoration: none;
+    }
+</style>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="login_register_area">
+        <div class="container">
+            <div class="login_wrapper">
+
+                <h3 class="title-7">Login</h3>
+                <form>
+                    <div class="input_wrap">
+                        <label>Email address <span>*</span></label>
+                        @Html.TextBoxFor(model => model.U_Email, new { htmlAttributes = new { @class = "form-control inp", @type = "email", required = string.Empty } })
+                    </div>
+                    <div class="input_wrap">
+                        <label>Password<span>*</span></label>
+                        @Html.PasswordFor(model => model.U_Password, new { htmlAttributes = new { @class = "form-control inp", @type = "password", required = string.Empty } })
+                        <span class="show-pass"><i class="far fa-eye" id="togglePassword"></i></span>
+                    </div>
+                    <div class="input_wrapp-2">
+                        <input type="checkbox" name="remember">
+                        <span>Remember me </span>
+                    </div>
+                    <div class="input_wrap">
+                        <button type="submit" name="login">log in</button>
+                        <a class="logbtn mt-2" href="@Url.Action("Register")" name="register" class="mt-2 d-block">Create a new Account</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="fashionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admins">
+          <Key>
+            <PropertyRef Name="A_id" />
+          </Key>
+          <Property Name="A_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A_Name" Type="nvarchar(max)" />
+          <Property Name="A_Email" Type="nvarchar(max)" />
+          <Property Name="A_Password" Type="varchar" MaxLength="100" />
+          <Property Name="A_Pic" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Billing">
+          <Key>
+            <PropertyRef Name="B_id" />
+          </Key>
+          <Property Name="B_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="B_Name" Type="varchar(max)" />
+          <Property Name="B_Address" Type="varchar(max)" />
+          <Property Name="B_Total" Type="int" />
+          <Property Name="B_email" Type="varchar(max)" />
+          <Property Name="B_city" Type="varchar(max)" />
+          <Property Name="B_Postal" Type="int" />
+          <Property Name="B_User_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="cart">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pro_ID" Type="varchar(max)" />
+          <Property Name="Pro_Name" Type="varchar(max)" />
+          <Property Name="Pro_qty" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Collections">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_Name" Type="varchar(max)" />
+          <Property Name="C_Pic" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="P_Name" Type="nvarchar(max)" />
+          <Property Name="P_Discription" Type="nvarchar(max)" />
+          <Property Name="P_Discount" Type="int" />
+          <Property Name="P_Price" Type="int" />
+          <Property Name="P_Stock" Type="int" />
+          <Property Name="P_Pic" Type="varchar(max)" />
+          <Property Name="P_Type" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="R_id" />
+          </Key>
+          <Property Name="R_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="R_Name" Type="varchar(max)" />
+          <Property Name="R_Title" Type="varchar(max)" />
+          <Property Name="R_discriptiopn" Type="varchar(max)" />
+          <Property Name="R_ProID" Type="int" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="U_id" />
+          </Key>
+          <Property Name="U_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="U_Name" Type="nvarchar(max)" />
+          <Property Name="U_Email" Type="nvarchar(max)" />
+          <Property Name="U_Contact" Type="nvarchar(max)" />
+          <Property Name="U_Password" Type="varchar" MaxLength="200" />
+          <Property Name="U_Address" Type="nvarchar(max)" />
+          <Property Name="U_Pic" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="fashionModelStoreContainer">
+          <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Billing" EntityType="Self.Billing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cart" EntityType="Self.cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Collections" EntityType="Self.Collections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fashionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="A_id" />
+          </Key>
+          <Property Name="A_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="A_Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="A_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Billing">
+          <Key>
+            <PropertyRef Name="B_id" />
+          </Key>
+          <Property Name="B_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="B_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="B_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="B_Total" Type="Int32" />
+          <Property Name="B_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="B_city" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="B_Postal" Type="Int32" />
+          <Property Name="B_User_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="cart">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pro_ID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Pro_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Pro_qty" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Collection">
+          <Key>
+            <PropertyRef Name="C_ID" />
+          </Key>
+          <Property Name="C_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="C_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="P_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P_Discription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P_Discount" Type="Int32" />
+          <Property Name="P_Price" Type="Int32" />
+          <Property Name="P_Stock" Type="Int32" />
+          <Property Name="P_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="P_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="R_id" />
+          </Key>
+          <Property Name="R_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="R_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="R_Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="R_discriptiopn" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="R_ProID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="U_id" />
+          </Key>
+          <Property Name="U_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="U_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="U_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="U_Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="U_Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="U_Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="U_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="fashionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="Billings" EntityType="Self.Billing" />
+          <EntitySet Name="carts" EntityType="Self.cart" />
+          <EntitySet Name="Collections" EntityType="Self.Collection" />
+          <EntitySet Name="products" EntityType="Self.product" />
+          <EntitySet Name="Reviews" EntityType="Self.Review" />
+          <EntitySet Name="users" EntityType="Self.user" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fashionModelStoreContainer" CdmEntityContainer="fashionEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="fashionModel.admin">
+              <MappingFragment StoreEntitySet="admins">
+                <ScalarProperty Name="A_id" ColumnName="A_id" />
+                <ScalarProperty Name="A_Name" ColumnName="A_Name" />
+                <ScalarProperty Name="A_Email" ColumnName="A_Email" />
+                <ScalarProperty Name="A_Password" ColumnName="A_Password" />
+                <ScalarProperty Name="A_Pic" ColumnName="A_Pic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Billings">
+            <EntityTypeMapping TypeName="fashionModel.Billing">
+              <MappingFragment StoreEntitySet="Billing">
+                <ScalarProperty Name="B_User_ID" ColumnName="B_User_ID" />
+                <ScalarProperty Name="B_id" ColumnName="B_id" />
+                <ScalarProperty Name="B_Name" ColumnName="B_Name" />
+                <ScalarProperty Name="B_Address" ColumnName="B_Address" />
+                <ScalarProperty Name="B_Total" ColumnName="B_Total" />
+                <ScalarProperty Name="B_email" ColumnName="B_email" />
+                <ScalarProperty Name="B_city" ColumnName="B_city" />
+                <ScalarProperty Name="B_Postal" ColumnName="B_Postal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="carts">
+            <EntityTypeMapping TypeName="fashionModel.cart">
+              <MappingFragment StoreEntitySet="cart">
+                <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+                <ScalarProperty Name="Pro_ID" ColumnName="Pro_ID" />
+                <ScalarProperty Name="Pro_Name" ColumnName="Pro_Name" />
+                <ScalarProperty Name="Pro_qty" ColumnName="Pro_qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Collections">
+            <EntityTypeMapping TypeName="fashionModel.Collection">
+              <MappingFragment StoreEntitySet="Collections">
+                <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+                <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+                <ScalarProperty Name="C_Pic" ColumnName="C_Pic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="fashionModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+                <ScalarProperty Name="P_Discription" ColumnName="P_Discription" />
+                <ScalarProperty Name="P_Discount" ColumnName="P_Discount" />
+                <ScalarProperty Name="P_Price" ColumnName="P_Price" />
+                <ScalarProperty Name="P_Stock" ColumnName="P_Stock" />
+                <ScalarProperty Name="P_Pic" ColumnName="P_Pic" />
+                <ScalarProperty Name="P_Type" ColumnName="P_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="fashionModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="R_id" ColumnName="R_id" />
+                <ScalarProperty Name="R_Name" ColumnName="R_Name" />
+                <ScalarProperty Name="R_Title" ColumnName="R_Title" />
+                <ScalarProperty Name="R_discriptiopn" ColumnName="R_discriptiopn" />
+                <ScalarProperty Name="R_ProID" ColumnName="R_ProID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="fashionModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="U_id" ColumnName="U_id" />
+                <ScalarProperty Name="U_Name" ColumnName="U_Name" />
+                <ScalarProperty Name="U_Email" ColumnName="U_Email" />
+                <ScalarProperty Name="U_Contact" ColumnName="U_Contact" />
+                <ScalarProperty Name="U_Password" ColumnName="U_Password" />
+                <ScalarProperty Name="U_Address" ColumnName="U_Address" />
+                <ScalarProperty Name="U_Pic" ColumnName="U_Pic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

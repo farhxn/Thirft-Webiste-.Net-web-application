@@ -1,0 +1,88 @@
+﻿
+@model IEnumerable<Thrift_Fashion.Models.admin>
+
+@{
+    ViewBag.Title = "Admins";
+    Layout = "~/Views/Shared/_Dashboard_Index.cshtml";
+}
+
+
+<style>
+    @@media screen and (max-width: 543px) {
+        .table-responsive {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    .table-responsive {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table, .jsgrid .jsgrid-table {
+        --bs-table-accent-bg: #23223e !important;
+    }
+</style>
+
+
+<!--<div class="row my-4">
+    <div class="col-12">
+        @*Html.ActionLink("Add User", "AddUser", "Admin", null, new { @class = "btn btn-success" })*@
+    </div>
+</div>-->
+
+
+
+<div class="row gsap">
+    <div class="col-12">
+        <div class="table-responsive">
+            <div class="col-sm-12">
+                <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(x => x.A_id)</th>
+                            <th>@Html.DisplayNameFor(x => x.A_Pic)</th>
+                            <th>@Html.DisplayNameFor(x => x.A_Name)</th>
+                            <th>@Html.DisplayNameFor(x => x.A_Email)</th>
+                            <th>@Html.DisplayNameFor(x => x.A_Password)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(x => item.A_id)
+                                </td>
+                                <td>
+                                    <img src="~/SiteUpload/@item.A_Pic" alt="User Profile Picture" class="rounded-circle" width="50px" height="50px" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.A_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.A_Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.A_Password)
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a class="btn btn-danger" title="Delete" href="@Url.Action("RemoveAdmins", "Admin", new { id = item.A_id })">
+                                            <i class="icon-trash"></i>
+                                        </a>
+                                        <a class="btn btn-warning" title="Edit" href="@Url.Action("EditAdmins", "Admin", new { id = item.A_id })">
+                                            <i class="icon-pencil"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

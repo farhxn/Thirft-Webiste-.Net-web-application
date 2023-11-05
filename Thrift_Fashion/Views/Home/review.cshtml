@@ -1,0 +1,164 @@
+﻿@model Thrift_Fashion.Models.Review
+
+@{
+    ViewBag.Title = "review";
+    Layout = "~/Views/Shared/_LoginLayoutFinal.cshtml";
+}
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login_wrapper {
+        padding: 80px 75px;
+        background: #F7F7F7;
+        margin-bottom: 30px;
+        width: 800px;
+    }
+
+    .input_wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+
+        .input_wrap div {
+            width: 100%;
+        }
+
+    @@media (max-width: 700px) {
+        .input_wrap {
+            flex-wrap: wrap;
+        }
+    }
+
+    .title-7 {
+        text-align: center;
+    }
+
+    .login_wrapper {
+        padding: 80px 75px;
+        background: #ffffff;
+        margin-bottom: 30px;
+        width: 800px;
+        box-shadow: 4px 5px 15px rgb(0 0 0 / 10%);
+        border-radius: 20px;
+    }
+
+    .logbtn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        border: 0;
+        background: #222222;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-weight: 600;
+        -webkit-transition: all 0.3s ease-out 0s;
+        -moz-transition: all 0.3s ease-out 0s;
+        -ms-transition: all 0.3s ease-out 0s;
+        -o-transition: all 0.3s ease-out 0s;
+        transition: all 0.3s ease-out 0s;
+        text-decoration: none;
+    }
+
+    .Modal-Pop {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 190px;
+        width: 600px;
+        transform: translate(-50%, -50%) scale(1);
+        border-radius: 10px;
+        z-index: 9999;
+        transition: 200ms linear;
+        background: #1d2125;
+        color: #fff;
+        box-shadow: 4px 5px 10px rgb(0 0 0);
+    }
+
+        .Modal-Pop.active {
+            display: block;
+        }
+
+        .Modal-Pop div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .Modal-Pop a {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            height: 30px;
+            width: 30px;
+            font-size: 20px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #111;
+            background: #292f34;
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        .Modal-Pop div span {
+            color: chartreuse;
+            font-weight: bolder;
+            font-size: 60px;
+        }
+
+        .Modal-Pop div h5 {
+            font-size: 16px;
+            line-height: 30px;
+        }
+</style>
+<div class="Modal-Pop ">
+    <div>
+        <a href="" class="closeBtn"><ion-icon name="close-outline"></ion-icon></a>
+        <span><ion-icon name="download-outline"></ion-icon></span>
+        <h5 style="text-align:center; color:#fff;">Creating your account.Please wait! <br />  You will be automatically  redirected to the login page!</h5>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+   
+    <div class="login_register_area">
+        <div class="container">
+            <div class="login_wrapper">
+
+                <h3 class="title-7">Review</h3>
+                <form>
+                    <div class="input_wrap">
+                        <label>Title<span>*</span></label><br />
+                        @Html.EditorFor(model => model.R_Title, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = "required" } })
+
+                    </div>
+                    <div class="input_wrap">
+                        <label>Discription<span>*</span></label><br />
+                        @Html.EditorFor(model => model.R_discriptiopn, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = "required" } })
+
+                    </div>
+                    @Html.EditorFor(model => model.R_Name, new { htmlAttributes = new { @class = "form-control inp", @type = "text", @Value = Session["Name"], @Hidden = "Hidden" } })
+                    @Html.EditorFor(model => model.R_ProID, new { htmlAttributes = new { @class = "form-control inp", @type = "text", @Value = Session["one"], @Hidden = "Hidden" } })
+                    <div class="input_wrap">
+                        <button type="submit" name="login">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,114 @@
+﻿@model Thrift_Fashion.Models.Billing
+@{
+    ViewBag.Title = "Additional Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="page section-header text-center">
+    <div class="page-title">
+        <div class="wrapper">
+            <h1 class="page-width">Additional Details</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+
+    <div class="row billing-fields">
+        <div class="col-6 sm-margin-30px-bottom">
+            <div class="create-ac-content bg-light-gray padding-20px-all">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <form>
+                        <fieldset>
+                            <h2 class="login-title mb-3">Billing details</h2>
+                            <div class="row">
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                    <label for="input-firstname">Name <span class="required-f">*</span></label>
+                                    @Html.EditorFor(model => model.B_Name, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = "required", @Value = Session["Name"], Readonly = "Readonly" } })
+                                </div>
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                    <label for="input-lastname">Email <span class="required-f">*</span></label>
+                                    @Html.EditorFor(model => model.B_email, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = "required", @Value = Session["email"], Readonly = "Readonly" } })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                    <label for="input-firstname">City <span class="required-f">*</span></label>
+                                    @Html.EditorFor(model => model.B_city, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = "required" } })
+                                </div>
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                    <label for="input-lastname">Postal <span class="required-f">*</span></label>
+                                    @Html.EditorFor(model => model.B_Postal, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = "required" } })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12 col-lg-12 col-xl-12required">
+                                    <label for="input-firstname">Address <span class="required-f">*</span></label>
+                                    @Html.EditorFor(model => model.B_Address, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = "required" } })
+                                </div>
+
+                                @Html.EditorFor(model => model.B_User_ID, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = "required", @Value = Session["u_id"], @Hidden = "Hidden" } })
+                                @Html.EditorFor(model => model.B_Total, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = "required", @Value = Session["totalprice"], @Hidden = "Hidden" } })
+                            </div>
+                            <div class="order-button-payment">
+                                <button class="btn" value="Place order" type="submit" data-toggle="modal" data-target="#exampleModalCenter">Place order</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                }
+            </div>
+        </div>
+
+        <div class="col-6">
+            <img src="~/ExtraClasses/new3.png" />
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+        emailjs.init('T7yONw9e0RNygTMTV');
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            emailjs.send("service_0bwd48t", "template_o5js2bu", {
+                firstname: @Session["Name"],
+                total: @Session["totalprice"],
+                email: @Session["email"],
+            }).then(() => {
+                console.log('send 200');
+            }, (error) => {
+                console.log(error);
+            });
+
+        })
+
+
+    </script>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thank You For Shopping Here!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+
+                <img height="100px" src="~/MainWebsite/assets/images/animate.gif" />
+                <h3 class="text-center text-capitalize">Your Order Is Being Placed</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

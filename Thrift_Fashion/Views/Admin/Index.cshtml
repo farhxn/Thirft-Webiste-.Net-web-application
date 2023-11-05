@@ -1,0 +1,160 @@
+﻿@model Thrift_Fashion.ExtraClasses.listTables
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Dashboard_Index.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Admin</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Admin Profile</th>
+                                <th>Admin ID</th>
+                                <th>Admin Name</th>
+                                <th>Admin Email</th>
+                                <th>Admin Password</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Admins)
+                            {
+                                <tr>
+                                    <td>@item.A_id</td>
+                                    <td><img src="~/SiteUpload/@item.A_Pic" alt="User Profile Picture" class="rounded-circle" width="50px" height="50px" /></td>
+                                    <td>@item.A_Name</td>
+                                    <td>@item.A_Email</td>
+                                    <td>@item.A_Password</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Products</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+                                <th>Product Price</th>
+                                <th>Discount Price</th>
+                                <th>Product Stock</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Products)
+                            {
+                                <tr>
+                                    <td>@item.P_ID</td>
+                                    <td>@item.P_Name</td>
+                                    <td>@item.P_Price</td>
+                                    <td>@item.P_Discount</td>
+                                    <td>@item.P_Stock</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Users</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Profile</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Password</th>
+                                <th>Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Users)
+                            {
+                                <tr>
+                                    <td>@item.U_id</td>
+                                    <td><img src="~/SiteUpload/@item.U_Pic" alt="User Profile Picture" class="rounded-circle" width="50px" height="50px" /></td>
+                                    <td>@item.U_Name</td>
+                                    <td>@item.U_Email</td>
+                                    <td>@item.U_Contact</td>
+                                    <td>@item.U_Password</td>
+                                    <td>@item.U_Address</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Orders</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Billing ID</th>
+                                <th>Billing Name</th>
+                                <th>Billing Email</th>
+                                <th>Billing City</th>
+                                <th>Billing Postal</th>
+                                <th>Billing Total</th>
+                                <th>Billing User</th>
+                                <th>Billing Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Billings)
+                            {
+                                <tr>
+                                    <td>@item.B_id</td>
+                                    <td>@item.B_Name</td>
+                                    <td>@item.B_email</td>
+                                    <td>@item.B_city</td>
+                                    <td>@item.B_Postal</td>
+                                    <td>@item.B_Total</td>
+                                    <td>@item.B_User_ID</td>
+                                    <td>@item.B_Address</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

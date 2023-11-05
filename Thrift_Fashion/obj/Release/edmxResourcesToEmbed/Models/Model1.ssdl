@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fashionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admins">
+    <Key>
+      <PropertyRef Name="A_id" />
+    </Key>
+    <Property Name="A_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="A_Name" Type="nvarchar(max)" />
+    <Property Name="A_Email" Type="nvarchar(max)" />
+    <Property Name="A_Password" Type="varchar" MaxLength="100" />
+    <Property Name="A_Pic" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Billing">
+    <Key>
+      <PropertyRef Name="B_id" />
+    </Key>
+    <Property Name="B_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="B_Name" Type="varchar(max)" />
+    <Property Name="B_Address" Type="varchar(max)" />
+    <Property Name="B_Total" Type="int" />
+    <Property Name="B_email" Type="varchar(max)" />
+    <Property Name="B_city" Type="varchar(max)" />
+    <Property Name="B_Postal" Type="int" />
+    <Property Name="B_User_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="C_ID" />
+    </Key>
+    <Property Name="C_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pro_ID" Type="varchar(max)" />
+    <Property Name="Pro_Name" Type="varchar(max)" />
+    <Property Name="Pro_qty" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Collections">
+    <Key>
+      <PropertyRef Name="C_ID" />
+    </Key>
+    <Property Name="C_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="C_Name" Type="varchar(max)" />
+    <Property Name="C_Pic" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="P_ID" />
+    </Key>
+    <Property Name="P_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="P_Name" Type="nvarchar(max)" />
+    <Property Name="P_Discription" Type="nvarchar(max)" />
+    <Property Name="P_Discount" Type="int" />
+    <Property Name="P_Price" Type="int" />
+    <Property Name="P_Stock" Type="int" />
+    <Property Name="P_Pic" Type="varchar(max)" />
+    <Property Name="P_Type" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="R_id" />
+    </Key>
+    <Property Name="R_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="R_Name" Type="varchar(max)" />
+    <Property Name="R_Title" Type="varchar(max)" />
+    <Property Name="R_discriptiopn" Type="varchar(max)" />
+    <Property Name="R_ProID" Type="int" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="U_id" />
+    </Key>
+    <Property Name="U_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="U_Name" Type="nvarchar(max)" />
+    <Property Name="U_Email" Type="nvarchar(max)" />
+    <Property Name="U_Contact" Type="nvarchar(max)" />
+    <Property Name="U_Password" Type="varchar" MaxLength="200" />
+    <Property Name="U_Address" Type="nvarchar(max)" />
+    <Property Name="U_Pic" Type="varchar(max)" />
+  </EntityType>
+  <EntityContainer Name="fashionModelStoreContainer">
+    <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Billing" EntityType="Self.Billing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cart" EntityType="Self.cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Collections" EntityType="Self.Collections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

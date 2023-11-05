@@ -1,0 +1,254 @@
+﻿
+@model Thrift_Fashion.Models.user
+@{
+    ViewBag.Title = "Register";
+    ViewBag.Banner = "Account Management";
+    Layout = "~/Views/Shared/_LoginLayoutFinal.cshtml";
+}
+
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login_wrapper {
+        padding: 80px 75px;
+        background: #F7F7F7;
+        margin-bottom: 30px;
+        width: 800px;
+    }
+
+    .input_wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .input_wrap div {
+            width: 100%;
+        }
+
+    @@media (max-width: 700px) {
+        .input_wrap {
+            flex-wrap: wrap;
+        }
+    }
+
+    .title-7 {
+        text-align: center;
+    }
+
+    .login_wrapper {
+        padding: 80px 75px;
+        background: #ffffff;
+        margin-bottom: 30px;
+        width: 800px;
+        box-shadow: 4px 5px 15px rgb(0 0 0 / 10%);
+        border-radius: 20px;
+    }
+
+    .logbtn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        border: 0;
+        background: #222222;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-weight: 600;
+        -webkit-transition: all 0.3s ease-out 0s;
+        -moz-transition: all 0.3s ease-out 0s;
+        -ms-transition: all 0.3s ease-out 0s;
+        -o-transition: all 0.3s ease-out 0s;
+        transition: all 0.3s ease-out 0s;
+        text-decoration: none;
+    }
+
+    .Modal-Pop {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 190px;
+        width: 600px;
+        transform: translate(-50%, -50%) scale(1);
+        border-radius: 10px;
+        z-index: 9999;
+        transition: 200ms linear;
+        background: #1d2125;
+        color: #fff;
+        box-shadow: 4px 5px 10px rgb(0 0 0);
+    }
+
+        .Modal-Pop.active {
+            display: block;
+        }
+
+        .Modal-Pop div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .Modal-Pop a {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            height: 30px;
+            width: 30px;
+            font-size: 20px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #111;
+            background: #292f34;
+            border-radius: 10px;
+            color: #fff;
+        }
+
+        .Modal-Pop div span {
+            color: chartreuse;
+            font-weight: bolder;
+            font-size: 60px;
+        }
+
+        .Modal-Pop div h5 {
+            font-size: 16px;
+            line-height: 30px;
+        }
+</style>
+
+<!--Form-->
+
+<div class="Modal-Pop ">
+    <div>
+        <a href="" class="closeBtn"><ion-icon name="close-outline"></ion-icon></a>
+        <span><ion-icon name="download-outline"></ion-icon></span>
+        <h5 style="text-align:center; color:#fff;">Creating your account.Please wait! <br />  You will be automatically  redirected to the login page!</h5>
+    </div>
+</div>
+
+@using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="login_register_area">
+        <div class="container">
+            <div class="login_wrapper">
+
+                <h3 class="title-7">Create Account</h3>
+                <form>
+                    <div class="input_wrap">
+                        <div class="div-wrap">
+                            <label>Name <span>*</span></label>
+                            @Html.TextBoxFor(model => model.U_Name, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = string.Empty } })
+                        </div>
+                        <div class="div-wrap">
+                            <label>Email Address <span>*</span></label>
+                            @Html.TextBoxFor(model => model.U_Email, new { htmlAttributes = new { @class = "form-control inp", @type = "email", required = string.Empty } })
+                        </div>
+                    </div>
+
+                    <div class="input_wrap">
+
+                    </div>
+
+                    <div class="input_wrap">
+                        <div>
+                            <label>Phone  <span>*</span></label>
+                            @Html.TextBoxFor(model => model.U_Contact, new { htmlAttributes = new { @class = "form-control inp", @type = "number", required = string.Empty } })
+                        </div>
+
+                        <div>
+                            <label>Password<span>*</span></label>
+                            @Html.PasswordFor(model => model.U_Password, new { htmlAttributes = new { @class = "form-control inp", @type = "password", required = string.Empty } })
+                            <span class="show-pass"><i class="far fa-eye" id="togglePassword"></i></span>
+                        </div>
+                    </div>
+
+
+                    <div class="input_wrap">
+                        <div>
+                            <label>Home Address <span>*</span></label>
+                            @Html.TextBoxFor(model => model.U_Address, new { htmlAttributes = new { @class = "form-control inp", @type = "text", required = string.Empty } })
+                        </div>
+                    </div>
+                    <div class="input_wrapp-2">
+                        <input type="checkbox" name="remember">
+                        <span>Remember me </span>
+                    </div>
+                    <div class="input_wrap">
+                        <button name="Onsub" class="mt-2">Create a new Account</button>
+                    </div>
+                    <div>
+                        <a class="logbtn" href="@Url.Action("Login")" name="login">log in</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="~/SiteUpload/email.min.js"></script>
+
+<script>
+
+
+    function emailWorkAround() {
+
+        const form = document.querySelector('form');
+        const modal = document.querySelector(".Modal-Pop");
+        const closeBtn = document.querySelector(".closeBtn");
+
+        emailjs.init('T7yONw9e0RNygTMTV');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            modal.classList.add('active');
+
+            emailjs.send("service_0bwd48t", "template_cdus12g", {
+                U_Name: form.U_Name.value,
+                U_Email: form.U_Email.value,
+                U_Password: form.U_Password.value,
+                reply_to: 'punkc957@gmail.com',
+            }).then(function () {
+                !event.preventDefault();
+                form.submit();
+            }, function (error) {
+                console.log(error);
+            });
+        });
+
+
+        closeBtn.addEventListener('click', e => {
+
+            e.preventDefault();
+
+            modal.style.transition = '200ms linear';
+            modal.style.transformOrigin = 'center';
+            modal.style.transform = 'scale(0)';
+
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 2000)
+
+        })
+
+
+    }
+
+    emailWorkAround();
+
+</script>

@@ -1,0 +1,152 @@
+﻿@model Thrift_Fashion.Models.admin
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<style>
+
+    .Modal-Pop {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 190px;
+        width: 600px;
+        transform: translate(-50%, -50%) scale(1);
+        border-radius: 10px;
+        z-index: 9999;
+        transition: 200ms linear;
+        background: #1d2125;
+        color: #fff;
+        box-shadow: 4px 5px 10px rgb(0 0 0);
+    }
+
+        .Modal-Pop div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .Modal-Pop a {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            height: 30px;
+            width: 30px;
+            font-size: 20px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: #111;
+            background: #292f34;
+            border-radius: 10px;
+            color: #fff;
+            
+        }
+
+        .Modal-Pop div span {
+            color: #f73e5e;
+            font-weight: bolder;
+            font-size: 60px;
+        }
+        .Modal-Pop div h5 {
+            font-size: 16px;
+            line-height:30px;
+        }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="d-lg-flex half">
+        <div class="bg order-1 order-md-2" style="background-image: url('/SiteUpload/bg.jpg');"></div>
+        <div class="contents order-2 order-md-1">
+
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7">
+                        <h3 style="color:#fff">Login to <strong>Admin</strong></h3>
+                        <p class="mb-4">You could buy tickets after login. Enjoy safe travels</p>
+                        <form action="#" method="post">
+                            <div class="form-group first">
+                                @Html.LabelFor(model => model.A_Email)
+                                @Html.TextBoxFor(model => model.A_Email, new { placeholder = "Enter Username", @class = "form-control fieldx" })
+                            </div>
+                            <div class="form-group last mb-3">
+                                @Html.LabelFor(model => model.A_Password)
+                                @Html.PasswordFor(model => model.A_Password, new { placeholder = "Enter Password", @class = "form-control fieldx" })
+                            </div>
+
+
+                            <div class="d-flex mb-5 align-items-center">
+                                <label class="control control--checkbox mb-0">
+                                    <span class="caption">Remember me</span>
+                                    <input type="checkbox" checked="checked" />
+                                    <div class="control__indicator"></div>
+                                </label>
+                            </div>
+
+                            <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+@{ if (Session["Wrongpass"] != null)
+    {
+        var sessionVal = (int)Session["Wrongpass"];
+        if (sessionVal != 0)
+        {
+            <div class="Modal-Pop">
+                <div>
+                    <a href="" class="closeBtn"><ion-icon name="close-outline"></ion-icon></a>
+                    <span><ion-icon name="close-circle-outline"></ion-icon></span>
+                    <h5 style="text-align:center;">Wrong Email Address or Password <br /> Please Try Again!</h5>
+                </div>
+            </div>
+
+
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+            <script>
+                const modal = document.querySelector(".Modal-Pop");
+                const closeBtn = document.querySelector(".closeBtn");
+                const fields = document.querySelectorAll('.fieldx');
+
+
+                fields.forEach((field) => {
+                    field.style.border = "1px solid #f73e5e";
+                })
+
+
+                closeBtn.addEventListener('click', e => {
+
+                    e.preventDefault();
+
+                    modal.style.transition = '200ms linear';
+                    modal.style.transformOrigin = 'center';
+                    modal.style.transform = 'scale(0)';
+
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 2000)
+
+                })
+
+
+            </script>
+        }
+    }
+}

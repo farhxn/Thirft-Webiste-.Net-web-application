@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Thrift_Fashion.Models.Collection>
+@{
+    ViewBag.Title = "Collection";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div id="page-content">
+    <div class="page section-header text-center">
+        <div class="page-title">
+            <div class="wrapper"><h1 class="page-width">Collections </h1></div>
+        </div>
+    </div>
+    
+    <div class="container collection-box">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+            <div class="col-6 col-sm-6 col-md-3 col-lg-3">
+                <div class="colletion-item">
+                    <a href="@Url.Action("SingleCollection","Home", new { name=item.C_Name }) ">
+                        <img class="blur-up lazyload" data-src="/MainWebsite/assets/images/collection/@item.C_Pic" src="/MainWebsite/assets/images/collection/@item.C_Pic" alt="image" title="">
+                        <span class="title"><span>@item.C_Name</span></span>
+                    </a>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+</div>

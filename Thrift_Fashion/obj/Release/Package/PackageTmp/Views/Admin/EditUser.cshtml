@@ -1,0 +1,103 @@
+﻿
+@model Thrift_Fashion.Models.user
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Views/Shared/_Dashboard_Index.cshtml";
+}
+
+
+@using (Html.BeginForm("EditUser", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row gsap">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Basic form elements</h4>
+                    <p class="card-description">
+                        Basic form elements
+                    </p>
+                    <form class="forms-sample">
+                        @Html.HiddenFor(model => model.U_id)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.U_Name, htmlAttributes: new { @class = "control-label col-md-2 " })
+                            @Html.EditorFor(model => model.U_Name, new { htmlAttributes = new { @class = "form-control inp" } })
+                            @Html.ValidationMessageFor(model => model.U_Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.U_Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.U_Password, new { htmlAttributes = new { @class = "form-control inp", @type = "password" } })
+                            @Html.ValidationMessageFor(model => model.U_Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.U_Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.U_Email, new { htmlAttributes = new { @class = "form-control inp", @type = "email" } })
+                            @Html.ValidationMessageFor(model => model.U_Email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.U_Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.U_Address, new { htmlAttributes = new { @class = "form-control inp" } })
+                            @Html.ValidationMessageFor(model => model.U_Address, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.U_Contact, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.U_Contact, new { htmlAttributes = new { @class = "form-control inp", @type = "number" } })
+                            @Html.ValidationMessageFor(model => model.U_Contact, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <img src="~/SiteUpload/@Model.U_Pic" alt="Profile Picture" class="rounded-circle file-image" width="100px" height="100px" />
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.U_Pic, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <input type="file" name="file" class="file-upload-default inp">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" accept="image/*" disabled="" placeholder="Upload Image">
+                                <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                </span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button class="btn btn-light btn-cancel">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script>
+
+    const btnCancel = document.querySelector('.btn-cancel');
+
+    btnCancel.addEventListener('click', (e) => {
+        e.preventDefault();
+        const input = document.querySelectorAll('.inp');
+        input.forEach((inp) => {
+            if (!inp.classList.contains('id-inp')) {
+                inp.value = '';
+            }
+        })
+    });
+
+    const fileUploadBtn = document.querySelector('.file-upload-browse');
+    const fileInput = document.querySelector('.file-upload-default');
+    const fileInfoVal = document.querySelector('.file-upload-info');
+    const image = document.querySelector('.file-image');
+    fileUploadBtn.addEventListener('click', () => {
+        fileInput.click();
+    })
+
+    fileInput.addEventListener('change', () => {
+        const [file] = fileInput.files
+        fileInfoVal.value = fileInput.files[0].name;
+        if (fileInput.files) {
+            image.src = URL.createObjectURL(file);
+        }
+    })
+
+
+</script>

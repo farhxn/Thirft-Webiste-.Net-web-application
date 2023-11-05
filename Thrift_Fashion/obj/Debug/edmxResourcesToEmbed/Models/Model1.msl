@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="fashionModelStoreContainer" CdmEntityContainer="fashionEntities">
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="fashionModel.admin">
+        <MappingFragment StoreEntitySet="admins">
+          <ScalarProperty Name="A_id" ColumnName="A_id" />
+          <ScalarProperty Name="A_Name" ColumnName="A_Name" />
+          <ScalarProperty Name="A_Email" ColumnName="A_Email" />
+          <ScalarProperty Name="A_Password" ColumnName="A_Password" />
+          <ScalarProperty Name="A_Pic" ColumnName="A_Pic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Billings">
+      <EntityTypeMapping TypeName="fashionModel.Billing">
+        <MappingFragment StoreEntitySet="Billing">
+          <ScalarProperty Name="B_User_ID" ColumnName="B_User_ID" />
+          <ScalarProperty Name="B_id" ColumnName="B_id" />
+          <ScalarProperty Name="B_Name" ColumnName="B_Name" />
+          <ScalarProperty Name="B_Address" ColumnName="B_Address" />
+          <ScalarProperty Name="B_Total" ColumnName="B_Total" />
+          <ScalarProperty Name="B_email" ColumnName="B_email" />
+          <ScalarProperty Name="B_city" ColumnName="B_city" />
+          <ScalarProperty Name="B_Postal" ColumnName="B_Postal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carts">
+      <EntityTypeMapping TypeName="fashionModel.cart">
+        <MappingFragment StoreEntitySet="cart">
+          <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+          <ScalarProperty Name="Pro_ID" ColumnName="Pro_ID" />
+          <ScalarProperty Name="Pro_Name" ColumnName="Pro_Name" />
+          <ScalarProperty Name="Pro_qty" ColumnName="Pro_qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Collections">
+      <EntityTypeMapping TypeName="fashionModel.Collection">
+        <MappingFragment StoreEntitySet="Collections">
+          <ScalarProperty Name="C_ID" ColumnName="C_ID" />
+          <ScalarProperty Name="C_Name" ColumnName="C_Name" />
+          <ScalarProperty Name="C_Pic" ColumnName="C_Pic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="fashionModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+          <ScalarProperty Name="P_Name" ColumnName="P_Name" />
+          <ScalarProperty Name="P_Discription" ColumnName="P_Discription" />
+          <ScalarProperty Name="P_Discount" ColumnName="P_Discount" />
+          <ScalarProperty Name="P_Price" ColumnName="P_Price" />
+          <ScalarProperty Name="P_Stock" ColumnName="P_Stock" />
+          <ScalarProperty Name="P_Pic" ColumnName="P_Pic" />
+          <ScalarProperty Name="P_Type" ColumnName="P_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="fashionModel.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="R_id" ColumnName="R_id" />
+          <ScalarProperty Name="R_Name" ColumnName="R_Name" />
+          <ScalarProperty Name="R_Title" ColumnName="R_Title" />
+          <ScalarProperty Name="R_discriptiopn" ColumnName="R_discriptiopn" />
+          <ScalarProperty Name="R_ProID" ColumnName="R_ProID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="fashionModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="U_id" ColumnName="U_id" />
+          <ScalarProperty Name="U_Name" ColumnName="U_Name" />
+          <ScalarProperty Name="U_Email" ColumnName="U_Email" />
+          <ScalarProperty Name="U_Contact" ColumnName="U_Contact" />
+          <ScalarProperty Name="U_Password" ColumnName="U_Password" />
+          <ScalarProperty Name="U_Address" ColumnName="U_Address" />
+          <ScalarProperty Name="U_Pic" ColumnName="U_Pic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

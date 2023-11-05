@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Thrift_Fashion.Models.Billing>
+
+@{
+    ViewBag.Title = "Billings";
+    Layout = "~/Views/Shared/_Dashboard_Index.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Orders</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Billing ID</th>
+                                <th>Billing Name</th>
+                                <th>Billing Email</th>
+                                <th>Billing City</th>
+                                <th>Billing Postal</th>
+                                <th>Billing Total</th>
+                                <th>Billing User</th>
+                                <th>Billing Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.B_id</td>
+                                    <td>@item.B_Name</td>
+                                    <td>@item.B_email</td>
+                                    <td>@item.B_city</td>
+                                    <td>@item.B_Postal</td>
+                                    <td>@item.B_Total</td>
+                                    <td>@item.B_User_ID</td>
+                                    <td>@item.B_Address</td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a class="btn btn-danger" title="Delete" href="@Url.Action("BillingsRemove", "Admin", new { id = item.B_id })">
+                                                <i class="icon-trash"></i>
+                                            </a> &nbsp;&nbsp;&nbsp;
+                                            <a class="btn btn-warning" title="Edit" href="@Url.Action("BillingsEdit", "Admin", new { id = item.B_id })">
+                                                <i class="icon-pencil"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

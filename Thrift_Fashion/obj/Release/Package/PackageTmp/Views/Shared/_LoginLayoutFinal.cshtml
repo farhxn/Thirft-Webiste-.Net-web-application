@@ -1,0 +1,143 @@
+﻿
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Therif Fashion | Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+ 
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/animate.min.css">
+    <link rel="stylesheet" href="~/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/assets/css/futura-std-font.css">
+    <link rel="stylesheet" href="~/assets/css/meanmenu.css">
+    <link rel="stylesheet" href="~/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/assets/css/slick.css">
+
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+
+    <link rel="stylesheet" href="~/MainWebsite/assets/css/plugins.css">
+    <link rel="stylesheet" href="~/MainWebsite/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/MainWebsite/assets/css/style.css">
+    <link rel="stylesheet" href="~/MainWebsite/assets/css/responsive.css">
+
+    <style>
+
+        .logo:first-letter {
+            font-size: 45px;
+            color: #f73e5e;
+            font-weight: bolder;
+        }
+
+        .logo {
+            font-size: 20px;
+        }
+        .banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            width: 100%;
+            background: #111;
+        }
+
+            .banner h1 {
+                text-align: center;
+                font-weight: bolder;
+                color: #fff;
+            }
+
+            body{
+                background:url(../../SiteUpload/bg.jpg);
+                background-size:cover;
+                background-repeat:no-repeat;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-10 col-sm-8 col-md-5 col-lg-4">
+
+                    <p class="phone-no"><i class="anm anm-phone-s"></i> +92 333 2245310</p>
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
+                    <div class="text-center">
+                        <p class="top-header_middle-text"> Worldwide Express Shipping</p>
+                    </div>
+                </div>
+                <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
+                    <span class="user-menu d-block d-lg-none">
+                        <i class="anm anm-user-al"
+                           aria-hidden="true"></i>
+                    </span>
+                    @if (Session["UserLogin"] == null)
+                    {
+
+                    }
+                    else
+                    {
+                        <ul class="customer-links list-inline">
+                            <li><p><strong>Welcome Mr. @Session["Name"]</strong></p></li>
+                            <li><a href="@Url.Action("Logout")">Logout</a></li>
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+
+    <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
+
+    <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#id_password');
+
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+    <!-- JS here -->
+    <script src="~/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/isotope.pkgd.min.js"></script>
+    <script src="~/assets/js/one-page-nav-min.js"></script>
+    <script src="~/assets/js/slick.min.js"></script>
+    <script src="~/assets/js/jquery.meanmenu.min.js"></script>
+    <script src="~/assets/js/ajax-form.js"></script>
+    <script src="~/assets/js/wow.min.js"></script>
+    <script src="~/assets/js/jquery.scrollUp.min.js"></script>
+    <script src="~/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="~/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/assets/js/plugins.js"></script>
+    <script src="~/assets/js/swiper-bundle.min.js"></script>
+    <script src="~/assets/js/countdown.js"></script>
+    <script src="~/assets/js/main.js"></script>
+    <!-- for cart -->
+    <script src="~/assets/js/cart.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+﻿@model Thrift_Fashion.Models.Billing
+
+@{
+    ViewBag.Title = "Edit Billing";
+    Layout = "~/Views/Shared/_Dashboard_Index.cshtml";
+}
+
+
+
+
+@using (Html.BeginForm("Update_User", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row gsap">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Change Billing</h4>
+                    <p class="card-description">
+                    </p>
+                    <form class="forms-sample">
+                        @Html.HiddenFor(model => model.B_id)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.B_Name, htmlAttributes: new { @class = "control-label col-md-2 " })
+                            @Html.EditorFor(model => model.B_Name, new { htmlAttributes = new { @class = "form-control inp" } })
+                            @Html.ValidationMessageFor(model => model.B_Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.B_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.B_email, new { htmlAttributes = new { @class = "form-control inp", @type = "text" } })
+                            @Html.ValidationMessageFor(model => model.B_email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.B_Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.B_Address, new { htmlAttributes = new { @class = "form-control inp", @type = "text" } })
+                            @Html.ValidationMessageFor(model => model.B_Address, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.B_city, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.B_city, new { htmlAttributes = new { @class = "form-control inp" } })
+                            @Html.ValidationMessageFor(model => model.B_city, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.B_Postal, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.B_Postal, new { htmlAttributes = new { @class = "form-control inp", @type = "text" } })
+                            @Html.ValidationMessageFor(model => model.B_Postal, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.B_Total, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.B_Total, new { htmlAttributes = new { @class = "form-control inp", @type = "text" } })
+                            @Html.ValidationMessageFor(model => model.B_Total, "", new { @class = "text-danger" })
+                        </div>
+
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <button class="btn btn-light btn-cancel">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script>
+
+    const btnCancel = document.querySelector('.btn-cancel');
+
+    btnCancel.addEventListener('click', (e) => {
+        e.preventDefault();
+        const input = document.querySelectorAll('.inp');
+        input.forEach((inp) => {
+            if (!inp.classList.contains('id-inp')) {
+                inp.value = '';
+            }
+        })
+    });
+
+   
+
+</script>
